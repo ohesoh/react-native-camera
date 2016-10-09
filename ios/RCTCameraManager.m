@@ -980,6 +980,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 - (void)setCaptureQuality:(NSString *)quality
 {
+    #if !(TARGET_IPHONE_SIMULATOR)
     if (quality) {
         [self.session beginConfiguration];
         if ([self.session canSetSessionPreset:quality]) {
@@ -987,6 +988,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         }
         [self.session commitConfiguration];
     }
+    #endif
 }
 
 @end
